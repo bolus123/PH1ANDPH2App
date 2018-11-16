@@ -11,6 +11,8 @@ shinyServer(function(input, output) {
         Ph2Data <- rnorm(input$Ph2testBatches * input$Ph2testSampleSize, input$Ph2testNormMu, sqrt(input$Ph2testNormSigma2))
         
         Ph1Data <- matrix(Ph1Data, ncol = input$Ph1testBatches, nrow = input$Ph1testSampleSize)
+        Ph1Data <- matrix(Ph2Data, ncol = input$Ph2testBatches, nrow = input$Ph2testSampleSize)
+        
         Ph1Obj <- Ph1ChartStatAndPars(Ph1Data)
         
         Ph2Obj <- Ph2ChartStat(Ph2Data)
