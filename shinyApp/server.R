@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
   
     output$plot1 <- renderPlot({
         Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
-        
+        Ph1Data <- matrix(Ph1Data, ncol = input$Ph1testBatches, nrow = input$Ph1testSampleSize)
         Ph1Obj <- Ph1ChartStatAndLimits(Ph1Data)
         #x <- rnorm(100)
         #x <- aabb(x)
