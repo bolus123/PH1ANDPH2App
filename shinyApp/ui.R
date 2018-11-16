@@ -57,7 +57,7 @@ shinyUI(fluidPage(
                     fluidRow(
                         column(5,
                             #tableOutput("psum"), plotOutput("box_ic")
-                            textOutput("text1")
+                            tableOutput("table1")#textOutput("text1")
                         ),
                         column(5,
                             #tableOutput("psum_1"), plotOutput("box_oc")

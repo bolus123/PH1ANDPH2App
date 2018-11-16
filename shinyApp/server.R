@@ -56,7 +56,7 @@ shinyServer(function(input, output) {
     
     
     
-    output$text1 <- renderText({
+    output$table1 <- renderTable({
         Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
         Ph1Statistics(Ph1Data)
     })
