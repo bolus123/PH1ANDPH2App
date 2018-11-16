@@ -30,6 +30,7 @@ shinyUI(fluidPage(
             numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
             numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
             numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
+            numericInput("Ph1testCC", "Ph1 Test Charting constant", 3, min = 1e-6),
             #######################################################################################
       
             selectInput("Ph2cc", "Phase II Control Chart:", 
@@ -42,7 +43,8 @@ shinyUI(fluidPage(
             numericInput("Ph2testNormMu", "Ph2 Test parameters mu", 0),      
             numericInput("Ph2testNormSigma2", "Ph2 Test parameters sigma2", 1, min = 1e-6),
             numericInput("Ph2testBatches", "Ph2 Test parameters batches", 10, min = 1),
-            numericInput("Ph2testSampleSize", "Ph2 Test parameters sample size", 5, min = 2)
+            numericInput("Ph2testSampleSize", "Ph2 Test parameters sample size", 5, min = 2),
+            numericInput("Ph2testCC", "Ph2 Test Charting constant", 3, min = 1e-6)
             #######################################################################################
       
         ),

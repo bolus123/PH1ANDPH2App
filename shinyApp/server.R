@@ -20,8 +20,8 @@ shinyServer(function(input, output) {
             Ph2ChartStat = Ph2Obj$Ph2ChartStat, 
             Ph1Mu = Ph1Obj$Ph1Mu, 
             Ph1Sigma2 = Ph1Obj$Ph1Sigma2, 
-            Ph1CC = 3, 
-            Ph2CC = 3
+            Ph1CC = input$Ph1testCC, 
+            Ph2CC = input$Ph2testCC
         )
 
     })
