@@ -23,6 +23,8 @@ shinyUI(fluidPage(
       
             fileInput('Ph1data', 'Choose Phase I Data',
                 accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
+                
+            textInput("caption", "Caption", "Data Summary"),
       
             selectInput("Ph2cc", "Phase II Control Chart:", 
                   choices = c("Basic Phase II X-bar Chart")),
