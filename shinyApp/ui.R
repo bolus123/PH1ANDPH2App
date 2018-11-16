@@ -62,10 +62,16 @@ shinyUI(fluidPage(
                                 tableOutput("Ph2stat")
                             ),
                             column(6,
-                                plotOutput("statplot1")
+                                plotOutput("boxplot1")
                             ),
                             column(6,
-                                plotOutput("statplot2")
+                                plotOutput("boxplot2")
+                            ),
+                            column(6,
+                                plotOutput("qqplot1")
+                            ),
+                            column(6,
+                                plotOutput("qqplot2")
                             )
                         )
                     ),

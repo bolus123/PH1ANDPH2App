@@ -44,13 +44,25 @@ shinyServer(function(input, output) {
 
     }, digits = 5)
     
-    output$statplot1 <- renderPlot({
-        statplots(Ph1Data())
-    }, width = 200, height = 400)
+    output$boxplot1 <- renderPlot({
+        x <- as.vector(Ph1Data())
+        boxplot(x)
+    })
     
-    output$statplot2 <- renderPlot({
-        statplots(Ph2Data())
-    }, width = 200, height = 400)
+    output$boxplot2 <- renderPlot({
+        x <- as.vector(Ph2Data())
+        boxplot(x)
+    })
+    
+    output$qqplot1 <- renderPlot({
+        x <- as.vector(Ph1Data())
+        qqnorm(x)
+    })
+    
+    output$qqplot2 <- renderPlot({
+        x <- as.vector(Ph2Data())
+        qqnorm(x)
+    })
   
 ################################################################################################################ 
   

@@ -28,17 +28,6 @@ Statistics <- function(Data){
 
 }
 
-statplots <- function(Data){
-
-
-    x <- as.vector(Data)
-    
-    par(mfrow = c(2, 1))
-    
-    boxplot(x)
-    qqnorm(x)
-    
-}
 
 
 #########################################################################
