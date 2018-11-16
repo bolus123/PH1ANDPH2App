@@ -58,13 +58,8 @@ ui <- shinyUI(fluidPage(
                   
                   tabPanel("Monitoring",
                            fluidRow(
-                             column(6,
-                                    #plotOutput("cdf"), plotOutput("pdf")
-                                    textOutput("text3")
-                             ),
-                             column(6,
-                                    #plotOutput("cdfrl1"), plotOutput("pdfrl1"))
-                                    textOutput("text4")
+                             column(5,
+                                    plotOutput("plot1")
                              )
                              
                            )
@@ -72,14 +67,19 @@ ui <- shinyUI(fluidPage(
                   
                   tabPanel("Performance",
                            fluidRow(
-                             column(7,
-                                    #plotOutput("cdf"), plotOutput("pdf")
-                                    textOutput("text5")
+                             column(5,
+                                    plotOutput("plot2")
                              ),
-                             column(7,
-                                    #plotOutput("cdfrl1"), plotOutput("pdfrl1"))
-                                    textOutput("text6")
-                             )     
+                             column(5,
+                                    plotOutput("plot3")
+                             ),
+                             column(5,
+                                    plotOutput("plot4")
+                             ),
+                             column(5,
+                                    plotOutput("plot5")
+                             )   
+                            
                            )
                   )
                   
@@ -94,11 +94,46 @@ ui <- shinyUI(fluidPage(
       
       server <- shinyServer(function(input, output) {
         
-        output$test <- renderPlot({
+        output$plot1 <- renderPlot({
           x    <- rnorm(100)
           hist(x, col = 'darkgray', border = 'white')
+          
         })
+        
+        output$plot2 <- renderPlot({
+          x    <- rgamma(100, 3, 4)
+          hist(x, col = 'darkgray', border = 'white')
+          
+        })
+        
+        output$plot3 <- renderPlot({
+          x    <- rt(100, 2)
+          hist(x, col = 'darkgray', border = 'white')
+          
+        })
+        
+        output$plot4 <- renderPlot({
+          x    <- rbeta(100, 3, 4)
+          hist(x, col = 'darkgray', border = 'white')
+          
+        })
+        
+        output$plot5 <- renderPlot({
+          x    <- rexp(100, 5)
+          hist(x, col = 'darkgray', border = 'white')
+          
+        })
+        
+        
+        
+        output$text1 <- renderText('test1')
+        output$text2 <- renderText('test2')
+        output$text3 <- renderText('test3')
+        output$text4 <- renderText('test4')
+        output$text5 <- renderText('test5')
+        output$text6 <- renderText('test6')
+        
       })
       
       
-      shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server)
