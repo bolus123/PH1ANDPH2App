@@ -15,7 +15,7 @@ shinyUI(fluidPage(
   
   
     sidebarLayout(
-        column(5,
+        column(7,
             sidebarPanel(
           
                 selectInput("Ph1cc", "Phase I Control Chart:", 
@@ -49,49 +49,50 @@ shinyUI(fluidPage(
           
             )
         ),
-    
-        mainPanel(
-        
-            tabsetPanel(type = "tabs", 
-                    
-                tabPanel("Exploration",
-                    fluidRow(
-                        column(12,
-                            tableOutput("table1")
+        column(10,
+            mainPanel(
+            
+                tabsetPanel(type = "tabs", 
+                        
+                    tabPanel("Exploration",
+                        fluidRow(
+                            column(7,
+                                tableOutput("table1")
+                            )
                         )
-                    )
-                ),
-                    
-                tabPanel("Monitoring",
-                    fluidRow(
-                        column(12,
-                            plotOutput("plot1")
-                        )        
-                    )
-                ),
-                    
-                tabPanel("Performance",
-                    fluidRow(
-                        column(5,
-                            plotOutput("plot2")
-                        ),
-                        column(5,
-                            plotOutput("plot3")
-                        ),
-                        column(5,
-                            plotOutput("plot4")
-                        ),
-                        column(5,
-                            plotOutput("plot5")
+                    ),
+                        
+                    tabPanel("Monitoring",
+                        fluidRow(
+                            column(7,
+                                plotOutput("plot1")
+                            )        
+                        )
+                    ),
+                        
+                    tabPanel("Performance",
+                        fluidRow(
+                            column(5,
+                                plotOutput("plot2")
+                            ),
+                            column(5,
+                                plotOutput("plot3")
+                            ),
+                            column(5,
+                                plotOutput("plot4")
+                            ),
+                            column(5,
+                                plotOutput("plot5")
+                            )   
+                                    
                         )   
-                                
-                    )   
+                    )
+                        
+                        
+                        
                 )
-                    
-                    
-                    
-            )
-        
+            
+            )   
         )
     
     )
