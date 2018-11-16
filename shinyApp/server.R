@@ -64,8 +64,8 @@ shinyServer(function(input, output) {
         #    Value = tb$Value,
         #    stringsAsFactors = FALSE
         #)
-        
-        tb$Value
+        tb$Metric
+        #tb$Value
         
     }, digits = 5)
         
