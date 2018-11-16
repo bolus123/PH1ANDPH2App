@@ -1,3 +1,30 @@
+
+packages<-c("moments")
+check.packages(packages)
+
+
+#########################################################################
+
+Ph1Statistics <- function(Ph1Data){
+
+    m <- dim(Ph1Data)[1]
+    n <- dim(Ph1Data)[2]
+    
+    skew <- skewness(Ph1Data)
+    kurt <- kurtosis(Ph1Data)
+    
+    quantiles <- quantile(Ph1Data, c(0, 0.01, 0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95, 0.99, 1))
+    
+    out <- skew
+
+
+}
+
+
+
+
+#########################################################################
+
 ControlChartPlot <- function(Ph1ChartStat, Ph2ChartStat, Ph1Mu, Ph1Sigma2, Ph1CC = 3, Ph2CC = 3) {
 
     m1 <- length(Ph1ChartStat)
