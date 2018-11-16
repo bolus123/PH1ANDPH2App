@@ -62,10 +62,10 @@ shinyServer(function(input, output) {
   
     output$plot1 <- renderPlot({
         x <- rgamma(100, 3, 4)
-        hist(x, col = 'darkgray', border = 'white')}
+        hist(x, col = 'darkgray', border = 'white')
         #{ControlChartPlot(Ph1ChartStat, Ph1LowerLimit, Ph1UpperLimit)}
     
-    )
+    })
     
     output$plot2 <- renderPlot({
         x <- rgamma(100, 3, 4)
