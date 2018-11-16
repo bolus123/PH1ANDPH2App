@@ -67,7 +67,9 @@ shinyServer(function(input, output) {
         #)
         
         tb <- cbind(tb$Metric, round(tb$Value, 4))
-        colnames(tb) <- c('Metric', 'Value')
+        names(tb) <- c('Metric', 'Value')
+        
+        tb
 
     }, digits = 5)
         
