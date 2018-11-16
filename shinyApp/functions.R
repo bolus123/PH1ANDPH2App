@@ -62,8 +62,8 @@ ControlChartPlot <- function(Ph1ChartStat, Ph2ChartStat, Ph1Mu, Ph1Sigma2, Ph1CC
     
     points(seq(m1, m1 + m2, 1), c(Ph1ChartStat[m1], Ph2ChartStat), type = 'o', lty = 1)
     
-    points(c(m1 + 0.5, seq(m1 + 1, m1 + m2, 1)), c(Ph1LowerLimit.vec[m1], Ph2LowerLimit.vec), type = 'l', lty = 2)
-    points(c(m1 + 0.5, seq(m1 + 1, m1 + m2, 1)), c(Ph1UpperLimit.vec[m1], Ph2UpperLimit.vec), type = 'l', lty = 2)
+    points(c(m1 + 0.5, seq(m1 + 1, m1 + m2, 1)), c(Ph2LowerLimit.vec[1], Ph2LowerLimit.vec), type = 'l', lty = 2)
+    points(c(m1 + 0.5, seq(m1 + 1, m1 + m2, 1)), c(Ph2UpperLimit.vec[1], Ph2UpperLimit.vec), type = 'l', lty = 2)
     
     abline(v = m1 + 0.5, lty = 2)
 }
