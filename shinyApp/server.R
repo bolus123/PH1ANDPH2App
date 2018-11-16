@@ -29,14 +29,13 @@ ControlChartPlot <- function(ChartStat, LowerLimit, UpperLimit) {
     ####This part will be replaced by ggplot2
     
     plot(c(1, m), c(plot.min, plot.max), type = 'n', xlab = 'Batches', ylab = 'Charting Statistics')
-    points(seq(1, m, 1), ChartStat, type = 'l')
+    points(seq(1, m, 1), ChartStat, type = 'o', lty = 1)
     points(seq(1, m, 1), LowerLimit.vec, type = 'l', lty = 2)
     points(seq(1, m, 1), UpperLimit.vec, type = 'l', lty = 2)
 
 }
 
-
-
+#############################################################################
 
 
 shinyServer(function(input, output) {
@@ -63,7 +62,7 @@ shinyServer(function(input, output) {
   
     output$plot1 <- renderPlot(
     
-        ControlChartPlot(Ph1ChartStat, Ph1LowerLimit, Ph1UpperLimit)
+        {ControlChartPlot(Ph1ChartStat, Ph1LowerLimit, Ph1UpperLimit)}
     
     )
     
