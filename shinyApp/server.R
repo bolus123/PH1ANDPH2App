@@ -62,13 +62,17 @@ shinyServer(function(input, output) {
     #########################################################################
     ###Test Phase 1 data
     
+    m <- input$Ph1testBatches
+    n <- input$Ph1testSampleSize
+    
+    output$ph1text1 <- renderText(m * n)
     
     
     #########################################################################
   
   
     output$plot1 <- renderPlot({
-        X <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
+        X <- rnorm(m * n, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
         
         Ph1Obj <- Ph1ChartStatAndLimits(X)
         
