@@ -26,10 +26,10 @@ shinyUI(fluidPage(
                 
                 
             #######################################################################################    
-            textInput("Ph1testNormMu", "Ph1 Test parameters mu", "0"),
-            textInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", "1"),
-            textInput("Ph1testBatches", "Ph1 Test parameters batches", "10"),
-            textInput("Ph1testSampleSize", "Ph1 Test parameters sample size", "5"),
+            numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
+            numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1),
+            numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10),
+            numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5),
             #######################################################################################
       
             selectInput("Ph2cc", "Phase II Control Chart:", 
@@ -39,10 +39,10 @@ shinyUI(fluidPage(
                 accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
             
             #######################################################################################            
-            textInput("Ph2testNormMu", "Ph2 Test parameters mu", "0"),      
-            textInput("Ph2testNormSigma2", "Ph2 Test parameters sigma2", "1"),
-            textInput("Ph2testBatches", "Ph2 Test parameters batches", "10"),
-            textInput("Ph2testSampleSize", "Ph2 Test parameters sample size", "5")
+            numericInput("Ph2testNormMu", "Ph2 Test parameters mu", 0),      
+            numericInput("Ph2testNormSigma2", "Ph2 Test parameters sigma2", 1),
+            numericInput("Ph2testBatches", "Ph2 Test parameters batches", 10),
+            numericInput("Ph2testSampleSize", "Ph2 Test parameters sample size", 5)
             #######################################################################################
       
         ),
