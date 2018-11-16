@@ -55,16 +55,16 @@ shinyUI(fluidPage(
                         
                     tabPanel("Exploration",
                         fluidRow(
-                            column(5,
+                            column(6,
                                 tableOutput("Ph1stat")
                             ),
-                            column(5,
+                            column(6,
                                 tableOutput("Ph2stat")
                             ),
-                            column(5,
+                            column(6,
                                 plotOutput("statplot1")
                             ),
-                            column(5,
+                            column(6,
                                 plotOutput("statplot2")
                             )
                         )
@@ -72,7 +72,7 @@ shinyUI(fluidPage(
                         
                     tabPanel("Monitoring",
                         fluidRow(
-                            column(10,
+                            column(12,
                                 plotOutput("plot1")
                             )        
                         )
@@ -80,16 +80,16 @@ shinyUI(fluidPage(
                         
                     tabPanel("Performance",
                         fluidRow(
-                            column(5,
+                            column(6,
                                 plotOutput("plot2")
                             ),
-                            column(5,
+                            column(6,
                                 plotOutput("plot3")
                             ),
-                            column(5,
+                            column(6,
                                 plotOutput("plot4")
                             ),
-                            column(5,
+                            column(6,
                                 plotOutput("plot5")
                             )   
                                     
