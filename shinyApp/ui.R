@@ -67,7 +67,8 @@ shinyUI(fluidPage(
                 tabPanel("Monitoring",
                     fluidRow(
                         #column(5,
-                            plotOutput("plot1"), textOutput('ph1text1')
+                            plotOutput("plot1")
+                            #, textOutput('ph1text1')
                         #)
                                 
                     )
