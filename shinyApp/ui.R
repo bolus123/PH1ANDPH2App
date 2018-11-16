@@ -1,8 +1,17 @@
-if (!(require(shiny))) install.packages(shiny)
-require(shiny)
+check.packages <- function(pkg){
+    new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+    if (length(new.pkg)) 
+        install.packages(new.pkg, dependencies = TRUE)
+    sapply(pkg, require, character.only = TRUE)
+}
 
-if (!(require(shinythemes))) install.packages(shinythemes)
-require(shinythemes)
+
+###########################################################################################
+
+packages<-c("shiny", "shinythemes")
+check.packages(packages)
+
+###########################################################################################
 
 # Define UI for Statistical Performance Analysis (spa)
 
@@ -95,4 +104,4 @@ shinyUI(fluidPage(
 
       
       
-shinyApp(ui = ui, server = server)
+
