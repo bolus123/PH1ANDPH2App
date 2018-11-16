@@ -13,9 +13,13 @@ Ph1Statistics <- function(Ph1Data){
     skew <- skewness(Ph1Data)
     kurt <- kurtosis(Ph1Data)
     
-    quantiles <- quantile(Ph1Data, c(0, 0.01, 0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95, 0.99, 1))
+    quantiles <- quantile(Ph1Data, c(0, 1, 0.01, 0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95, 0.99))
     
-    out <- c(m, n, skew, kurt, quantiles)
+    out <- list(
+        Metric = c('m', 'n', 'Skewedness', 'Kurtosis', 'Max', 'Min', 'Q-0.01', 'Q-0.05', 'Q-0.1', 'Q-0.2', 'Q-0.25', 'Q-0.5'
+            , 'Q-0.75', 'Q-0.8', 'Q-0.9', 'Q-0.95', 'Q-0.99'),
+        Value = c(m, n, skew, kurt, quantiles)
+    )
     
     return(out)
 
