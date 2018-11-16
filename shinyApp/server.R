@@ -74,7 +74,9 @@ shinyServer(function(input, output) {
         
         #Ph1Obj <- Ph1ChartStatAndLimits(X)
         #x <- rnorm(100)
-        hist(x, col = 'darkgray', border = 'white')
+        #hist(x, col = 'darkgray', border = 'white')
+        
+        Ph1ChartStatAndLimits(Ph1data = x, ChartConst = 3)
         
         #Ph1Data <- matrix(
         #    rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2)), 
