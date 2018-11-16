@@ -33,7 +33,7 @@ statplots <- function(Data){
 
     x <- as.vector(Data)
     
-    par(mfrow = c(1, 2))
+    par(mfrow = c(2, 1))
     
     boxplot(x)
     qqnorm(x)

@@ -46,11 +46,11 @@ shinyServer(function(input, output) {
     
     output$statplot1 <- renderPlot({
         statplots(Ph1Data())
-    })
+    }, width = 400, height = 800)
     
     output$statplot2 <- renderPlot({
         statplots(Ph2Data())
-    })
+    }, width = 400, height = 800)
   
 ################################################################################################################ 
   
