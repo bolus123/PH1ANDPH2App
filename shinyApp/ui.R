@@ -15,8 +15,7 @@ shinyUI(fluidPage(
   
   
     sidebarLayout(
-        column(7,
-            sidebarPanel(
+        sidebarPanel(
           
                 selectInput("Ph1cc", "Phase I Control Chart:", 
                       choices = c("Basic Phase I X-bar Chart")),
@@ -47,9 +46,9 @@ shinyUI(fluidPage(
                 numericInput("Ph2testCC", "Ph2 Test Charting constant", 3, min = 1e-6)
                 #######################################################################################
           
-            )
-        ),
-        column(7,
+            ),
+            
+
             mainPanel(
             
                 tabsetPanel(type = "tabs", 
@@ -93,7 +92,7 @@ shinyUI(fluidPage(
                 )
             
             )   
-        )
+        
     
     )
 ))
