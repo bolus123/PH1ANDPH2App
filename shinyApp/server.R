@@ -38,6 +38,24 @@ ControlChartPlot <- function(ChartStat, LowerLimit, UpperLimit) {
 
 #########################################################################
 
+Ph1ChartStatAndLimits <- function(Ph1data, ChartConst = 3) {
+
+    Ph1ChartStat <- rowMeans(X)
+    Ph1sigma <- sqrt(mean(diag(var(t(Ph1Data)))))
+    Ph1LowerLimit <- Ph1mu - ChartConst * Ph1sigma
+    Ph1UpperLimit <- Ph1mu + ChartConst * Ph1sigma
+    
+    out <- list(Ph1ChartStat = Ph1ChartStat, Ph1LowerLimit = Ph1LowerLimit, Ph1UpperLimit = Ph1UpperLimit)
+    
+    return(out)
+    
+}
+
+
+
+#########################################################################
+
+
 shinyServer(function(input, output) {
 
   
@@ -50,8 +68,11 @@ shinyServer(function(input, output) {
   
   
     output$plot1 <- renderPlot({
-        x <- rnorm(100, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
-        hist(x, col = 'darkgray', border = 'white')
+        X <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
+        
+        Ph1Obj <- Ph1ChartStatAndLimits(X)
+        
+        hist(Ph1Obj$Ph1ChartStat, col = 'darkgray', border = 'white')
         
         #Ph1Data <- matrix(
         #    rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2)), 
