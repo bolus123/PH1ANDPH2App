@@ -1,18 +1,18 @@
 shinyServer(function(input, output) {
 
   
-    ##source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/functions.R', local = TRUE)
+    source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/functions.R', local = TRUE)
   
-    aabb <- function(x) x * 10
+    #aabb <- function(x) x * 10
   
   
     output$plot1 <- renderPlot({
         x <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
         
-        #Ph1Obj <- Ph1ChartStatAndLimits(X)
+        Ph1Obj <- Ph1ChartStatAndLimits(X)
         #x <- rnorm(100)
-        x <- aabb(x)
-        hist(x, col = 'darkgray', border = 'white')
+        #x <- aabb(x)
+        hist(Ph1Obj$Ph1ChartStat, col = 'darkgray', border = 'white')
         
         #Ph1ChartStatAndLimits(Ph1data = x, ChartConst = 3)
         
