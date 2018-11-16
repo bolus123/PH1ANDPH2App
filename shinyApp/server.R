@@ -9,7 +9,7 @@ shinyServer(function(input, output) {
     Ph1Data <- reactive({
         req(input$Ph1Data)
         inFile <- input$Ph1Data
-        read_excel(inFile$datapath, 1)   
+        as.matrix(read_excel(inFile$datapath, 1))
     })
 
     #Ph1Data <- reactive({
