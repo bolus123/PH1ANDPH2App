@@ -1,7 +1,7 @@
 shinyServer(function(input, output) {
 
   
-    source('R/testScript.R', local = TRUE)
+    source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/functions.R', local = TRUE)
   
   
     output$plot1 <- renderPlot({
