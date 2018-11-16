@@ -38,7 +38,7 @@ ControlChartPlot <- function(ChartStat, LowerLimit, UpperLimit) {
 
 Ph1ChartStatAndLimits <- function(Ph1data, ChartConst = 3) {
 
-    Ph1ChartStat <- rowMeans(X)
+    Ph1ChartStat <- rowMeans(Ph1data)
     Ph1sigma <- sqrt(mean(diag(var(t(Ph1Data)))))
     Ph1LowerLimit <- Ph1mu - ChartConst * Ph1sigma
     Ph1UpperLimit <- Ph1mu + ChartConst * Ph1sigma
