@@ -49,7 +49,7 @@ shinyUI(fluidPage(
           
             )
         ),
-        column(10,
+        column(7,
             mainPanel(
             
                 tabsetPanel(type = "tabs", 
