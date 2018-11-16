@@ -17,7 +17,40 @@ shinyServer(function(input, output) {
         Ph2Data <- matrix(Ph2Data, ncol = input$Ph2testSampleSize, nrow = input$Ph2testBatches)
         Ph2Data
     })
+ 
+################################################################################################################
     
+    output$Ph1stat <- renderTable({
+
+        tb <- Ph1Statistics(Ph1Data())
+        
+        data.frame(
+            'Phase I Metric' = tb$Metric,
+            Value = tb$Value,
+            stringsAsFactors = FALSE
+        )
+
+    }, digits = 5)
+    
+    output$Ph2stat <- renderTable({
+
+        tb <- Ph1Statistics(Ph2Data())
+        
+        data.frame(
+            'Phase II Metric' = tb$Metric,
+            Value = tb$Value,
+            stringsAsFactors = FALSE
+        )
+
+    }, digits = 5)
+    
+    output$statplot1 <- renderPlot({
+        statplots(Ph1Data())
+    })
+    
+    output$statplot2 <- renderPlot({
+        statplots(Ph2Data())
+    })
   
 ################################################################################################################ 
   
@@ -64,31 +97,8 @@ shinyServer(function(input, output) {
     
     })
     
-    
-    
-    output$Ph1stat <- renderTable({
+################################################################################################################
 
-        tb <- Ph1Statistics(Ph1Data())
-        
-        data.frame(
-            'Phase I Metric' = tb$Metric,
-            Value = tb$Value,
-            stringsAsFactors = FALSE
-        )
-
-    }, digits = 5)
-    
-    output$Ph2stat <- renderTable({
-
-        tb <- Ph1Statistics(Ph2Data())
-        
-        data.frame(
-            'Phase II Metric' = tb$Metric,
-            Value = tb$Value,
-            stringsAsFactors = FALSE
-        )
-
-    }, digits = 5)
         
     output$text2 <- renderText('test2')
     output$text3 <- renderText('test3')

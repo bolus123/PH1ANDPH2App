@@ -19,7 +19,7 @@ Statistics <- function(Data){
     sw.norm <- shapiro.test(Data)$p.value
     
     out <- list(
-        Metric = c('m', 'n', 'Skewedness', 'Kurtosis', 'Max', 'Min', 'Q-0.01', 'Q-0.05', 'Q-0.1', 'Q-0.2', 'Q-0.25', 'Q-0.5'
+        Metric = c('m', 'n', 'Skewness', 'Kurtosis', 'Max', 'Min', 'Q-0.01', 'Q-0.05', 'Q-0.1', 'Q-0.2', 'Q-0.25', 'Q-0.5'
             , 'Q-0.75', 'Q-0.8', 'Q-0.9', 'Q-0.95', 'Q-0.99', 'Shapiro-Wilk\n P-value'),
         Value = c(m, n, skew, kurt, quantiles, sw.norm)
     )
@@ -28,7 +28,17 @@ Statistics <- function(Data){
 
 }
 
+statplots <- function(Data){
 
+
+    x <- as.vector(Data)
+    
+    par(mfrow = c(1, 2))
+    
+    boxplot(x)
+    qqnorm(x)
+    
+}
 
 
 #########################################################################
