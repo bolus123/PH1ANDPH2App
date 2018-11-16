@@ -74,12 +74,18 @@ shinyServer(function(input, output) {
         
         Ph2Obj <- Ph2ChartStat(Ph2Data())
         
+        Ph1.cc <- PH1.get.cc(
+                    input$Ph1testBatches, 
+                    input$Ph1testBatches * (input$Ph1testSampleSize - 1), 
+                    0.05
+                  )$c.i
+        
         ControlChartPlot(
             Ph1ChartStat = Ph1Obj$Ph1ChartStat, 
             Ph2ChartStat = Ph2Obj$Ph2ChartStat, 
             Ph1Mu = Ph1Obj$Ph1Mu, 
             Ph1Sigma2 = Ph1Obj$Ph1Sigma2, 
-            Ph1CC = input$Ph1testCC, 
+            Ph1CC = Ph1.cc, 
             Ph2CC = input$Ph2testCC
         )
 

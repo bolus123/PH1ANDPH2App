@@ -1,7 +1,7 @@
 
-packages<-c("moments")
+packages<-c("moments", 'devtools')
 check.packages(packages)
-
+install_github('bolus123/PH1AND2XBAR')
 
 #########################################################################
 
@@ -20,7 +20,7 @@ Statistics <- function(Data){
     
     out <- list(
         Metric = c('m', 'n', 'Skewness', 'Kurtosis', 'Max', 'Min', 'Q-0.01', 'Q-0.05', 'Q-0.1', 'Q-0.2', 'Q-0.25', 'Q-0.5'
-            , 'Q-0.75', 'Q-0.8', 'Q-0.9', 'Q-0.95', 'Q-0.99', 'Shapiro-Wilk\n P-value'),
+            , 'Q-0.75', 'Q-0.8', 'Q-0.9', 'Q-0.95', 'Q-0.99', 'Shapiro-Wilk P-value'),
         Value = c(m, n, skew, kurt, quantiles, sw.norm)
     )
     
