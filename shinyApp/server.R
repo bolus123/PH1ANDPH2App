@@ -60,7 +60,7 @@ shinyServer(function(input, output) {
         Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
         Ph1Statistics(Ph1Data)
     })
-    
+        
     output$text2 <- renderText('test2')
     output$text3 <- renderText('test3')
     output$text4 <- renderText('test4')

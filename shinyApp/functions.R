@@ -15,8 +15,9 @@ Ph1Statistics <- function(Ph1Data){
     
     quantiles <- quantile(Ph1Data, c(0, 0.01, 0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95, 0.99, 1))
     
-    out <- skew
-
+    out <- c(m, n, skew, kurt, quantiles)
+    
+    return(out)
 
 }
 
