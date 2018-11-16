@@ -66,7 +66,9 @@ shinyServer(function(input, output) {
         #    stringsAsFactors = FALSE
         #)
 
-        c(length(tb$Metric), length(tb$Value))
+        #c(length(tb$Metric), length(tb$Value))
+        
+        tb$Value
         
         #tb <- cbind(tb$Metric, round(tb$Value, 4))
         #colnames(tb) <- c('Metric', 'Value')
