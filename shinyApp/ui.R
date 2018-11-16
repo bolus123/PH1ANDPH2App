@@ -20,22 +20,22 @@ shinyUI(fluidPage(
                 selectInput("Ph1cc", "Phase I Control Chart:", 
                       choices = c("Basic Phase I X-bar Chart")),
           
-                fileInput('Ph1data', 'Choose Phase I Data',
-                    accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
+                fileInput('Ph1Data', 'Choose Phase I Data',
+                    accept = c(".xlsx")),
                     
                     
                 #######################################################################################    
-                numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
-                numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
-                numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
-                numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
+                #numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
+                #numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
+                #numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
+                #numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
                 numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1),
                 #######################################################################################
           
                 selectInput("Ph2cc", "Phase II Control Chart:", 
                       choices = c("Basic Phase II X-bar Chart")),
           
-                fileInput('Ph2data', 'Choose Phase II Data',
+                fileInput('Ph2Data', 'Choose Phase II Data',
                     accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
                 
                 #######################################################################################            

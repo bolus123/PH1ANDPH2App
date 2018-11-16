@@ -8,7 +8,7 @@ check.packages <- function(pkg){
 
 ###########################################################################################
 
-packages<-c("shiny", "shinythemes")
+packages<-c("shiny", "shinythemes", "readxl")
 check.packages(packages)
 
 ###########################################################################################

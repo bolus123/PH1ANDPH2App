@@ -7,10 +7,16 @@ shinyServer(function(input, output) {
 ################################################################################################################ 
 
     Ph1Data <- reactive({
-        Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
-        Ph1Data <- matrix(Ph1Data, ncol = input$Ph1testSampleSize, nrow = input$Ph1testBatches)
-        Ph1Data
+        req(input$Ph1Data)
+        inFile <- input$Ph1Data
+        read_excel(inFile$datapath, 1)   
     })
+
+    #Ph1Data <- reactive({
+    #    Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
+    #    Ph1Data <- matrix(Ph1Data, ncol = input$Ph1testSampleSize, nrow = input$Ph1testBatches)
+    #    Ph1Data
+    #})
     
     Ph2Data <- reactive({
         Ph2Data <- rnorm(input$Ph2testBatches * input$Ph2testSampleSize, input$Ph2testNormMu, sqrt(input$Ph2testNormSigma2))

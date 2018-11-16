@@ -1,5 +1,5 @@
 
-packages<-c("moments", 'devtools')
+packages<-c("moments", "devtools")
 check.packages(packages)
 install_github('bolus123/PH1AND2XBAR')
 
