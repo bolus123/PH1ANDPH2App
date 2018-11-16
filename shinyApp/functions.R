@@ -1,49 +1,96 @@
-ControlChartPlot <- function(ChartStat, LowerLimit, UpperLimit) {
+ControlChartPlot <- function(Ph1ChartStat, Ph2ChartStat, Ph1Mu, Ph1Sigma2, Ph1CC = 3, Ph2CC = 3) {
 
-    m <- length(ChartStat)
+    m1 <- length(Ph1ChartStat)
     
-    if (length(LowerLimit) == 1) {
+    m2 <- length(Ph2ChartStat)
     
-        LowerLimit.vec <- rep(LowerLimit, m)
+    Ph1LowerLimit <- Ph1Mu - Ph1CC * sqrt(Ph1Sigma2)
+    Ph1UpperLimit <- Ph1Mu + Ph1CC * sqrt(Ph1Sigma2)
     
-    } else {
+    Ph2LowerLimit <- Ph1Mu - Ph2CC * sqrt(Ph1Sigma2)
+    Ph2UpperLimit <- Ph1Mu + Ph2CC * sqrt(Ph1Sigma2)
     
-        LowerLimit.vec <- LowerLimit
+    if (length(Ph1LowerLimit) == 1) {
     
-    }
-    
-    if (length(UpperLimit) == 1) {
-    
-        UpperLimit.vec <- rep(UpperLimit, m)
+        Ph1LowerLimit.vec <- rep(Ph1LowerLimit, m1)
     
     } else {
     
-        UpperLimit.vec <- UpperLimit
+        Ph1LowerLimit.vec <- Ph1LowerLimit
     
     }
     
-    plot.max <- max(c(ChartStat, LowerLimit.vec, UpperLimit.vec))
-    plot.min <- min(c(ChartStat, LowerLimit.vec, UpperLimit.vec))
+    if (length(Ph1UpperLimit) == 1) {
+    
+        Ph1UpperLimit.vec <- rep(Ph1UpperLimit, m1)
+    
+    } else {
+    
+        Ph1UpperLimit.vec <- Ph1UpperLimit
+    
+    }
+    
+    if (length(Ph2LowerLimit) == 1) {
+    
+        Ph2LowerLimit.vec <- rep(Ph2LowerLimit, m2)
+    
+    } else {
+    
+        Ph2LowerLimit.vec <- Ph2LowerLimit
+    
+    }
+    
+    if (length(Ph2UpperLimit) == 1) {
+    
+        Ph2UpperLimit.vec <- rep(Ph2UpperLimit, m2)
+    
+    } else {
+    
+        Ph2UpperLimit.vec <- Ph2UpperLimit
+    
+    }
+    
+    plot.max <- max(c(Ph1ChartStat, Ph1LowerLimit.vec, Ph1UpperLimit.vec, Ph2LowerLimit.vec, Ph2UpperLimit.vec))
+    plot.min <- min(c(Ph1ChartStat, Ph1LowerLimit.vec, Ph1UpperLimit.vec, Ph2LowerLimit.vec, Ph2UpperLimit.vec))
     
     ####This part will be replaced by ggplot2
     
-    plot(c(1, m), c(plot.min, plot.max), type = 'n', xlab = 'Batches', ylab = 'Charting Statistics')
-    points(seq(1, m, 1), ChartStat, type = 'o', lty = 1)
-    points(seq(1, m, 1), LowerLimit.vec, type = 'l', lty = 2)
-    points(seq(1, m, 1), UpperLimit.vec, type = 'l', lty = 2)
-
+    plot(c(1, m1 + m2), c(plot.min, plot.max), type = 'n', xlab = 'Batches', ylab = 'Charting Statistics')
+    points(seq(1, m1, 1), Ph1ChartStat, type = 'o', lty = 1)
+    points(c(seq(1, m1, 1), m1 + 0.5), c(Ph1LowerLimit.vec, Ph1LowerLimit.vec[m1]), type = 'l', lty = 2)
+    points(c(seq(1, m1, 1), m1 + 0.5), c(Ph1UpperLimit.vec, Ph1UpperLimit.vec[m1]), type = 'l', lty = 2)
+    
+    points(seq(m1, m1 + m2, 1), c(Ph1ChartStat[m1], Ph2ChartStat), type = 'o', lty = 1)
+    
+    points(c(m1 + 0.5, seq(m1 + 1, m1 + m2, 1)), c(Ph1LowerLimit.vec[m1], Ph2LowerLimit.vec), type = 'l', lty = 2)
+    points(c(m1 + 0.5, seq(m1 + 1, m1 + m2, 1)), c(Ph1UpperLimit.vec[m1], Ph2UpperLimit.vec), type = 'l', lty = 2)
 }
 
 #########################################################################
 
-Ph1ChartStatAndLimits <- function(Ph1data, ChartConst = 3) {
+Ph1ChartStatAndPars <- function(Ph1Data) {
 
-    Ph1ChartStat <- rowMeans(Ph1data)
-    Ph1sigma <- sqrt(mean(diag(var(t(Ph1Data)))))
-    Ph1LowerLimit <- Ph1mu - ChartConst * Ph1sigma
-    Ph1UpperLimit <- Ph1mu + ChartConst * Ph1sigma
+    Ph1ChartStat <- rowMeans(Ph1Data)
+    Ph1Mu <- mean(Ph1Data)
+    Ph1Sigma2 <- mean(diag(var(t(Ph1Data))))
     
-    out <- list(Ph1ChartStat = Ph1ChartStat, Ph1LowerLimit = Ph1LowerLimit, Ph1UpperLimit = Ph1UpperLimit)
+    out <- list(Ph1ChartStat = Ph1ChartStat, Ph1Mu = Ph1Mu, Ph1Sigma2 = Ph1Sigma2)
+    
+    return(out)
+    
+}
+
+#########################################################################
+
+
+
+#########################################################################
+
+Ph2ChartStat <- function(Ph2Data) {
+
+    Ph2ChartStat <- rowMeans(Ph2Data)
+    
+    out <- list(Ph2ChartStat = Ph2ChartStat)
     
     return(out)
     
