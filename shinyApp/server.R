@@ -66,7 +66,8 @@ shinyServer(function(input, output) {
         #    stringsAsFactors = FALSE
         #)
         
-        cbind(tb$Metric, tb$Value)
+        tb <- cbind(tb$Metric, round(tb$Value, 4))
+        colnames(tb) <- NA
 
     }, digits = 5)
         
