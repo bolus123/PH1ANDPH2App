@@ -12,6 +12,10 @@ shinyServer(function(input, output) {
         as.matrix(read_excel(inFile$datapath, 1))
     })
 
+    Ph1Dimension <- reactive({
+        dim(Ph1Data())
+    })
+    
     #Ph1Data <- reactive({
     #    Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
     #    Ph1Data <- matrix(Ph1Data, ncol = input$Ph1testSampleSize, nrow = input$Ph1testBatches)
@@ -80,10 +84,12 @@ shinyServer(function(input, output) {
         
         Ph2Obj <- Ph2ChartStat(Ph2Data())
         
+        d <- Ph1Dimension()
+        
         Ph1.cc <- PH1.get.cc(
-                    input$Ph1testBatches, 
-                    input$Ph1testBatches * (input$Ph1testSampleSize - 1), 
-                    0.05
+                    d[1], 
+                    d[1] * (d[2] - 1), 
+                    input$FAP
                   )$c.i
         
         ControlChartPlot(
