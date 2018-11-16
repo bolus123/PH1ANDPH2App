@@ -57,11 +57,13 @@ shinyServer(function(input, output) {
     output$qqplot1 <- renderPlot({
         x <- as.vector(Ph1Data())
         qqnorm(x)
+        qqline(x)
     })
     
     output$qqplot2 <- renderPlot({
         x <- as.vector(Ph2Data())
         qqnorm(x)
+        qqline(x)
     })
   
 ################################################################################################################ 
