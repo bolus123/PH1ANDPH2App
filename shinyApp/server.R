@@ -78,6 +78,8 @@ shinyServer(function(input, output) {
         
         Ph1ChartStatAndLimits(Ph1data = x, ChartConst = 3)
         
+        hist(Ph1ChartStatAndLimits$Ph1ChartStat, col = 'darkgray', border = 'white')
+        
         #Ph1Data <- matrix(
         #    rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2)), 
         #    ncol = input$Ph1testSampleSize,
