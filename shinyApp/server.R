@@ -66,7 +66,7 @@ shinyServer(function(input, output) {
     
     
     
-    output$table1 <- renderTable({
+    output$Ph1stat <- renderTable({
 
         tb <- Ph1Statistics(Ph1Data())
         
@@ -76,7 +76,19 @@ shinyServer(function(input, output) {
             stringsAsFactors = FALSE
         )
 
-    }, digits = 5)
+    }, caption = "Phase I", digits = 5)
+    
+    output$Ph2stat <- renderTable({
+
+        tb <- Ph1Statistics(Ph2Data())
+        
+        data.frame(
+            Metric = tb$Metric,
+            Value = tb$Value,
+            stringsAsFactors = FALSE
+        )
+
+    }, caption = "Phase II", digits = 5)
         
     output$text2 <- renderText('test2')
     output$text3 <- renderText('test3')

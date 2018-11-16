@@ -55,8 +55,11 @@ shinyUI(fluidPage(
                         
                     tabPanel("Exploration",
                         fluidRow(
-                            column(7,
+                            column(5,
                                 tableOutput("table1")
+                            ),
+                            column(5,
+                                tableOutput("table2")
                             )
                         )
                     ),

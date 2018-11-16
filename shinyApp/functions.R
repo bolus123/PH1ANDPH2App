@@ -5,18 +5,18 @@ check.packages(packages)
 
 #########################################################################
 
-Ph1Statistics <- function(Ph1Data){
+Statistics <- function(Data){
 
-    m <- dim(Ph1Data)[1]
-    n <- dim(Ph1Data)[2]
+    m <- dim(Data)[1]
+    n <- dim(Data)[2]
     
-    x <- as.vector(Ph1Data)
+    x <- as.vector(Data)
     
     skew <- skewness(x)
     kurt <- kurtosis(x)
     
     quantiles <- quantile(x, c(0, 1, 0.01, 0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95, 0.99))
-    sw.norm <- shapiro.test(Ph1Data)$p.value
+    sw.norm <- shapiro.test(Data)$p.value
     
     out <- list(
         Metric = c('m', 'n', 'Skewedness', 'Kurtosis', 'Max', 'Min', 'Q-0.01', 'Q-0.05', 'Q-0.1', 'Q-0.2', 'Q-0.25', 'Q-0.5'
