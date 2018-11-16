@@ -71,7 +71,7 @@ shinyServer(function(input, output) {
         tb <- Ph1Statistics(Ph1Data())
         
         data.frame(
-            Metric = paste('Phase I ', tb$Metric, sep = ''),
+            'Phase I Metric' = tb$Metric,
             Value = tb$Value,
             stringsAsFactors = FALSE
         )
@@ -83,7 +83,7 @@ shinyServer(function(input, output) {
         tb <- Ph1Statistics(Ph2Data())
         
         data.frame(
-            Metric = paste('Phase II ', tb$Metric, sep = ''),
+            'Phase II Metric' = tb$Metric,
             Value = tb$Value,
             stringsAsFactors = FALSE
         )
