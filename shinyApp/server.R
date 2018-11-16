@@ -22,12 +22,10 @@ shinyServer(function(input, output) {
 ################################################################################################################ 
   
     output$plot1 <- renderPlot({
-        Ph1Data <- Ph1Data()
-        Ph2Data <- Ph2Data()
         
-        Ph1Obj <- Ph1ChartStatAndPars(Ph1Data)
+        Ph1Obj <- Ph1ChartStatAndPars(Ph1Data())
         
-        Ph2Obj <- Ph2ChartStat(Ph2Data)
+        Ph2Obj <- Ph2ChartStat(Ph2Data())
         
         ControlChartPlot(
             Ph1ChartStat = Ph1Obj$Ph1ChartStat, 
@@ -73,19 +71,10 @@ shinyServer(function(input, output) {
         tb <- Ph1Statistics(Ph1Data())
         
         data.frame(
-            Metric = unlist(tb$Metric),
-            Value = unlist(tb$Value),
+            Metric = tb$Metric,
+            Value = tb$Value,
             stringsAsFactors = FALSE
         )
-
-        #c(length(tb$Metric), length(tb$Value))
-        
-        #tb$Value
-        
-        #tb <- cbind(tb$Metric, round(tb$Value, 4))
-        #colnames(tb) <- c('Metric', 'Value')
-        
-        #tb
 
     }, digits = 5)
         

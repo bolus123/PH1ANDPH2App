@@ -10,7 +10,7 @@ shinyUI(fluidPage(
   
   # Application title
   
-    titlePanel("Phase I and Phase I Control Charts"),
+    titlePanel("Phase I and Phase II Control Charts"),
   
   
   
