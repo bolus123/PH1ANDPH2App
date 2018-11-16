@@ -1,43 +1,45 @@
-shinyServer(function(input, output) {
-  
-    #########################################################################
+#########################################################################
     
-    ControlChartPlot <- function(ChartStat, LowerLimit, UpperLimit) {
+ControlChartPlot <- function(ChartStat, LowerLimit, UpperLimit) {
 
-        m <- length(ChartStat)
-        
-        if (length(LowerLimit) == 1) {
-        
-            LowerLimit.vec <- rep(LowerLimit, m)
-        
-        } else {
-        
-            LowerLimit.vec <- LowerLimit
-        
-        }
-        
-        if (length(UpperLimit) == 1) {
-        
-            UpperLimit.vec <- rep(UpperLimit, m)
-        
-        } else {
-        
-            UpperLimit.vec <- UpperLimit
-        
-        }
-        
-        plot.max <- max(c(ChartStat, LowerLimit.vec, UpperLimit.vec))
-        plot.min <- min(c(ChartStat, LowerLimit.vec, UpperLimit.vec))
-        
-        ####This part will be replaced by ggplot2
-        
-        plot(c(1, m), c(plot.min, plot.max), type = 'n', xlab = 'Batches', ylab = 'Charting Statistics')
-        points(seq(1, m, 1), ChartStat, type = 'o', lty = 1)
-        points(seq(1, m, 1), LowerLimit.vec, type = 'l', lty = 2)
-        points(seq(1, m, 1), UpperLimit.vec, type = 'l', lty = 2)
-
+    m <- length(ChartStat)
+    
+    if (length(LowerLimit) == 1) {
+    
+        LowerLimit.vec <- rep(LowerLimit, m)
+    
+    } else {
+    
+        LowerLimit.vec <- LowerLimit
+    
     }
-  
+    
+    if (length(UpperLimit) == 1) {
+    
+        UpperLimit.vec <- rep(UpperLimit, m)
+    
+    } else {
+    
+        UpperLimit.vec <- UpperLimit
+    
+    }
+    
+    plot.max <- max(c(ChartStat, LowerLimit.vec, UpperLimit.vec))
+    plot.min <- min(c(ChartStat, LowerLimit.vec, UpperLimit.vec))
+    
+    ####This part will be replaced by ggplot2
+    
+    plot(c(1, m), c(plot.min, plot.max), type = 'n', xlab = 'Batches', ylab = 'Charting Statistics')
+    points(seq(1, m, 1), ChartStat, type = 'o', lty = 1)
+    points(seq(1, m, 1), LowerLimit.vec, type = 'l', lty = 2)
+    points(seq(1, m, 1), UpperLimit.vec, type = 'l', lty = 2)
+
+}
+
+#########################################################################
+
+shinyServer(function(input, output) {
+
   
     #########################################################################
     ###Test Phase 1 data
@@ -48,7 +50,7 @@ shinyServer(function(input, output) {
   
   
     output$plot1 <- renderPlot({
-        x <- rgamma(100, 3, 4)
+        x <- rnorm(100, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
         hist(x, col = 'darkgray', border = 'white')
         
         #Ph1Data <- matrix(
