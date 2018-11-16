@@ -15,38 +15,39 @@ shinyUI(fluidPage(
   
   
     sidebarLayout(
-    
-        sidebarPanel(
-      
-            selectInput("Ph1cc", "Phase I Control Chart:", 
-                  choices = c("Basic Phase I X-bar Chart")),
-      
-            fileInput('Ph1data', 'Choose Phase I Data',
-                accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
+        column(5,
+            sidebarPanel(
+          
+                selectInput("Ph1cc", "Phase I Control Chart:", 
+                      choices = c("Basic Phase I X-bar Chart")),
+          
+                fileInput('Ph1data', 'Choose Phase I Data',
+                    accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
+                    
+                    
+                #######################################################################################    
+                numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
+                numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
+                numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
+                numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
+                numericInput("Ph1testCC", "Ph1 Test Charting constant", 3, min = 1e-6),
+                #######################################################################################
+          
+                selectInput("Ph2cc", "Phase II Control Chart:", 
+                      choices = c("Basic Phase II X-bar Chart")),
+          
+                fileInput('Ph2data', 'Choose Phase II Data',
+                    accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
                 
-                
-            #######################################################################################    
-            numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
-            numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
-            numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
-            numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
-            numericInput("Ph1testCC", "Ph1 Test Charting constant", 3, min = 1e-6),
-            #######################################################################################
-      
-            selectInput("Ph2cc", "Phase II Control Chart:", 
-                  choices = c("Basic Phase II X-bar Chart")),
-      
-            fileInput('Ph2data', 'Choose Phase II Data',
-                accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
-            
-            #######################################################################################            
-            numericInput("Ph2testNormMu", "Ph2 Test parameters mu", 0),      
-            numericInput("Ph2testNormSigma2", "Ph2 Test parameters sigma2", 1, min = 1e-6),
-            numericInput("Ph2testBatches", "Ph2 Test parameters batches", 10, min = 1),
-            numericInput("Ph2testSampleSize", "Ph2 Test parameters sample size", 5, min = 2),
-            numericInput("Ph2testCC", "Ph2 Test Charting constant", 3, min = 1e-6)
-            #######################################################################################
-      
+                #######################################################################################            
+                numericInput("Ph2testNormMu", "Ph2 Test parameters mu", 0),      
+                numericInput("Ph2testNormSigma2", "Ph2 Test parameters sigma2", 1, min = 1e-6),
+                numericInput("Ph2testBatches", "Ph2 Test parameters batches", 10, min = 1),
+                numericInput("Ph2testSampleSize", "Ph2 Test parameters sample size", 5, min = 2),
+                numericInput("Ph2testCC", "Ph2 Test Charting constant", 3, min = 1e-6)
+                #######################################################################################
+          
+            )
         ),
     
         mainPanel(
@@ -55,7 +56,7 @@ shinyUI(fluidPage(
                     
                 tabPanel("Exploration",
                     fluidRow(
-                        column(5,
+                        column(12,
                             tableOutput("table1")
                         )
                     )
@@ -63,9 +64,9 @@ shinyUI(fluidPage(
                     
                 tabPanel("Monitoring",
                     fluidRow(
-                    
+                        column(12,
                             plotOutput("plot1")
-                                
+                        )        
                     )
                 ),
                     

@@ -71,10 +71,8 @@ shinyServer(function(input, output) {
         tb <- Ph1Statistics(Ph1Data())
         
         data.frame(
-            tb$Metric[1:9],
-            tb$Value[1:9],
-            tb$Metric[10:18],
-            tb$Value[10:18],
+            Metric = tb$Metric,
+            Value = tb$Value,
             stringsAsFactors = FALSE
         )
 
