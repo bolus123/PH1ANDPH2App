@@ -55,14 +55,14 @@ shinyUI(fluidPage(
                     
                 tabPanel("Exploration",
                     fluidRow(
-                        column(5,
+                        #column(5,
                             #tableOutput("psum"), plotOutput("box_ic")
                             tableOutput("table1")#textOutput("text1")
-                        ),
-                        column(5,
+                        #),
+                        #column(5,
                             #tableOutput("psum_1"), plotOutput("box_oc")
-                            textOutput("text2")
-                        )
+                        #    textOutput("text2")
+                        #)
                     )
                 ),
                     
