@@ -20,13 +20,15 @@ Ph1Statistics <- function(Ph1Data){
     
     out <- list(
         Metric = c('m', 'n', 'Skewedness', 'Kurtosis', 'Max', 'Min', 'Q-0.01', 'Q-0.05', 'Q-0.1', 'Q-0.2', 'Q-0.25', 'Q-0.5'
-            , 'Q-0.75', 'Q-0.8', 'Q-0.9', 'Q-0.95', 'Q-0.99', 'Shapiro-Wilk P-value'),
+            , 'Q-0.75', 'Q-0.8', 'Q-0.9', 'Q-0.95', 'Q-0.99', 'Shapiro-Wilk\n P-value'),
         Value = c(m, n, skew, kurt, quantiles, sw.norm)
     )
     
     return(out)
 
 }
+
+
 
 
 #########################################################################
