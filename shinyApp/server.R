@@ -60,16 +60,16 @@ shinyServer(function(input, output) {
         Ph1Data <- rnorm(input$Ph1testBatches * input$Ph1testSampleSize, input$Ph1testNormMu, sqrt(input$Ph1testNormSigma2))
         tb <- Ph1Statistics(Ph1Data)
         
-        #data.frame(
-        #    Metric = tb$Metric,
-        #    Value = tb$Value,
-        #    stringsAsFactors = FALSE
-        #)
+        data.frame(
+            Metric = unlist(tb$Metric),
+            Value = unlist(tb$Value),
+            stringsAsFactors = FALSE
+        )
         
-        tb <- cbind(tb$Metric, round(tb$Value, 4))
-        names(tb) <- c('Metric', 'Value')
+        #tb <- cbind(tb$Metric, round(tb$Value, 4))
+        #colnames(tb) <- c('Metric', 'Value')
         
-        tb
+        #tb
 
     }, digits = 5)
         
