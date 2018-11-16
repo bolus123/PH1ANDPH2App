@@ -29,6 +29,21 @@ Statistics <- function(Data){
 }
 
 
+#########################################################################
+
+Ph1ChartStatAndPars <- function(Ph1Data) {
+
+    n <- dim(Ph1Data)[2]
+
+    Ph1ChartStat <- rowMeans(Ph1Data)
+    Ph1Mu <- mean(Ph1Data)
+    Ph1Sigma2 <- mean(diag(var(t(Ph1Data)))) / n
+    
+    out <- list(Ph1ChartStat = Ph1ChartStat, Ph1Mu = Ph1Mu, Ph1Sigma2 = Ph1Sigma2)
+    
+    return(out)
+    
+}
 
 #########################################################################
 
@@ -102,19 +117,6 @@ ControlChartPlot <- function(Ph1ChartStat, Ph2ChartStat, Ph1Mu, Ph1Sigma2, Ph1CC
     abline(v = m1 + 0.5, lty = 2)
 }
 
-#########################################################################
-
-Ph1ChartStatAndPars <- function(Ph1Data) {
-
-    Ph1ChartStat <- rowMeans(Ph1Data)
-    Ph1Mu <- mean(Ph1Data)
-    Ph1Sigma2 <- mean(diag(var(t(Ph1Data))))
-    
-    out <- list(Ph1ChartStat = Ph1ChartStat, Ph1Mu = Ph1Mu, Ph1Sigma2 = Ph1Sigma2)
-    
-    return(out)
-    
-}
 
 #########################################################################
 
