@@ -102,14 +102,11 @@ shinyServer(function(input, output) {
   
 ################################################################################################################ 
   
-    output$ControlChart <- renderPlot({
-        
-        Ph1Obj <- Ph1ChartStatAndPars(Ph1Data())
-        
-        Ph2Obj <- Ph2ChartStat(Ph2Data())
-        
+  
+    Ph1.cc <- reactive({
+    
         d <- Ph1Dimension()
-        
+    
         if (input$Ph1cc == 'Basic Phase I X-bar Chart') {
             Ph1.cc <- PH1.get.cc(
                     d[1], 
@@ -121,7 +118,15 @@ shinyServer(function(input, output) {
             Ph1.cc <- input$Ph1testCC
         
         }
-                  
+    
+        Ph1.cc
+    
+    })
+    
+    Ph2.cc <- reactive({
+    
+        d <- Ph1Dimension()
+    
         if (input$Ph2cc == 'Basic Phase II X-bar Chart(UC)') {
         
             Ph2.cc <- LadjSp(input$ARL0, d[1], d[2])
@@ -135,6 +140,21 @@ shinyServer(function(input, output) {
             Ph2.cc <- input$Ph2testCC
             
         }
+        
+        Ph2.cc
+
+    })
+  
+
+    output$ControlChart <- renderPlot({
+        
+        Ph1Obj <- Ph1ChartStatAndPars(Ph1Data())
+        
+        Ph2Obj <- Ph2ChartStat(Ph2Data())
+        
+        Ph1.cc <- Ph1.cc()
+        
+        Ph2.cc <- Ph2.cc()        
         
         ControlChartPlot(
             Ph1ChartStat = Ph1Obj$Ph1ChartStat, 
