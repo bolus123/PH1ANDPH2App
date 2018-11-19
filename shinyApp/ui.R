@@ -18,22 +18,34 @@ shinyUI(fluidPage(
         sidebarPanel(
           
                 selectInput("Ph1cc", "Phase I Control Chart:", 
-                      choices = c("Basic Phase I X-bar Chart")),
+                      choices = c("Basic Phase I X-bar Chart"， "Basic Ph I Testing")),
           
                 fileInput('Ph1Data', 'Choose Phase I Data',
                     accept = c(".xlsx")),
                     
                     
                 #######################################################################################    
+                numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1),
+                #######################################################################################
+                conditionalPanel(
+                    condition = "input.plotType == 'hist'",
+                    selectInput(
+                       "breaks", "Breaks",
+                       c("Sturges",
+                         "Scott",
+                         "Freedman-Diaconis",
+                         "[Custom]" = "custom")
+                ),
+                
                 #numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
                 #numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
                 #numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
                 #numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
-                numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1),
+              
                 #######################################################################################
           
                 selectInput("Ph2cc", "Phase II Control Chart:", 
-                      choices = c("Basic Phase II X-bar Chart")),
+                      choices = c("Basic Phase II X-bar Chart", "Basic Ph II Testing")),
           
                 fileInput('Ph2Data', 'Choose Phase II Data',
                     accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
