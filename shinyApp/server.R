@@ -155,17 +155,21 @@ shinyServer(function(input, output) {
         
         if (tail(tb1$Value, 1) <= 0.05) {
             
-           mes <- '*Your Phase I data may be not from a normal distribution' 
+            if (tail(tb2$Value, 1) <= 0.05) {
+            
+                mes <- '*Both of your Phase I and II data may be not from normal distributions'
+            
+            } else {
+            
+                mes <- '*Your Phase I data may be not from a normal distribution' 
+           
+            }
         
         } else if (tail(tb2$Value, 1) <= 0.05) {
         
             mes <- '*Your Phase II data may be not from a normal distribution' 
         
-        } else if (tail(tb1$Value, 1) <= 0.05 & tail(tb2$Value, 1) <= 0.05) {
-        
-            mes <- '*Both of your Phase I and II data may be not from normal distributions'
-        
-        }
+        } 
         
         mes
         
