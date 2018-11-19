@@ -32,7 +32,7 @@ shinyServer(function(input, output) {
     
     output$Ph1stat <- renderTable({
 
-        tb <- Ph1Statistics(Ph1Data())
+        tb <- Statistics(Ph1Data())
         
         data.frame(
             'Phase I Metric' = tb$Metric,
@@ -44,7 +44,7 @@ shinyServer(function(input, output) {
     
     output$Ph2stat <- renderTable({
 
-        tb <- Ph1Statistics(Ph2Data())
+        tb <- Statistics(Ph2Data())
         
         data.frame(
             'Phase II Metric' = tb$Metric,
