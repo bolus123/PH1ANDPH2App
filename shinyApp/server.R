@@ -46,9 +46,17 @@ shinyServer(function(input, output) {
  
 ################################################################################################################
     
+    tb1 <- reactive({
+        Statistics(Ph1Data())
+    })
+    
+    tb2 <-  reactive({
+        Statistics(Ph2Data())
+    })
+    
     output$Ph1stat <- renderTable({
 
-        tb <- Statistics(Ph1Data())
+        tb <- tb1()
         
         data.frame(
             'Phase I Metric' = tb$Metric,
@@ -60,7 +68,7 @@ shinyServer(function(input, output) {
     
     output$Ph2stat <- renderTable({
 
-        tb <- Statistics(Ph2Data())
+        tb <- tb2()
         
         data.frame(
             'Phase II Metric' = tb$Metric,
@@ -94,7 +102,7 @@ shinyServer(function(input, output) {
   
 ################################################################################################################ 
   
-    output$plot1 <- renderPlot({
+    output$ControlChart <- renderPlot({
         
         Ph1Obj <- Ph1ChartStatAndPars(Ph1Data())
         
@@ -139,7 +147,34 @@ shinyServer(function(input, output) {
 
     })
     
+    output$ControlChartWarning <- renderText({
+        tb1 <- tb1()
+        tb2 <- tb2()
+        
+        mes <- NULL
+        
+        if (tail(tb1$Value, 1) <= 0.05) {
+            
+           mes <- '*Your Phase I data may be not from a normal distribution' 
+        
+        } else if (tail(tb2$Value, 1) <= 0.05) {
+        
+            mes <- '*Your Phase II data may be not from a normal distribution' 
+        
+        } else if (tail(tb1$Value, 1) <= 0.05 & tail(tb2$Value, 1) <= 0.05) {
+        
+            mes <- '*Both of your Phase I and II data may be not from normal distributions'
+        
+        }
+        
+        mes
+        
+    })
+    
 ################################################################################################################    
+    
+    
+################################################################################################################
     
     output$plot2 <- renderPlot({
         x <- rgamma(100, 3, 4)

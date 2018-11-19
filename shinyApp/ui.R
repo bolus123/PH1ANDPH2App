@@ -6,7 +6,13 @@ shinyUI(fluidPage(
   
     theme = shinytheme("flatly"),
   
-  
+    tags$head(tags$style(
+                    "#ControlChartWarning{color: red;
+                    font-size: 20px;
+                    font-style: italic;
+                    }"
+            )
+    ),
   
   # Application title
   
@@ -106,7 +112,9 @@ shinyUI(fluidPage(
                     tabPanel("Monitoring",
                         fluidRow(
                             column(12,
-                                plotOutput("plot1")
+                                plotOutput("ControlChart"),
+                                textOutput("ControlChartWarning")
+                                
                             )        
                         )
                     ),
