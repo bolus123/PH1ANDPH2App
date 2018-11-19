@@ -2,8 +2,15 @@
 packages<-c("moments", "devtools")
 check.packages(packages)
 install_github('bolus123/PH1AND2XBAR')
+install_github('Allanvh/XbarChartWithEstimation', subdir = 'XbarChartWithEstimation')
 
 PH1.get.cc <- PH1AND2XBAR::PH1.get.cc
+LadjSp <- XbarChartWithEstimation::LadjSp
+LadjSpEPC <- XbarChartWithEstimation::LadjSpEPC
+
+#########################################################################
+
+c4.f <- function(nu) sqrt(2 / nu) * 1 / beta(nu / 2, 1 / 2) * sqrt(pi)             #c4.function
 
 #########################################################################
 

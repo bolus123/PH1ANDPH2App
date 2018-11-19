@@ -102,11 +102,31 @@ shinyServer(function(input, output) {
         
         d <- Ph1Dimension()
         
-        Ph1.cc <- PH1.get.cc(
+        if (input$Ph1cc == 'Basic Phase I X-bar Chart') {
+            Ph1.cc <- PH1.get.cc(
                     d[1], 
                     d[1] * (d[2] - 1), 
                     input$FAP
                   )$c.i
+        } else if (input$Ph1cc == 'Basic Ph I Testing') {
+        
+            Ph1.cc <- input$Ph1testCC
+        
+        }
+                  
+        if (input$Ph2cc == 'Basic Phase II X-bar Chart(UC)') {
+        
+            Ph2.cc <- LadjSp(input$ARL0, d[1], d[2])
+            
+        } else if (input$Ph2cc == 'Basic Phase II X-bar Chart(EPC)') {
+        
+            Ph2.cc <- LadjSpEPC(input$ARL0, input$Eps, input$P, d[1], d[2])
+            
+        } else if (input$Ph2cc == 'Basic Ph II Testing') {
+        
+            Ph2.cc <- input$Ph2testCC
+            
+        }
         
         ControlChartPlot(
             Ph1ChartStat = Ph1Obj$Ph1ChartStat, 
@@ -114,7 +134,7 @@ shinyServer(function(input, output) {
             Ph1Mu = Ph1Obj$Ph1Mu, 
             Ph1Sigma2 = Ph1Obj$Ph1Sigma2, 
             Ph1CC = Ph1.cc, 
-            Ph2CC = input$Ph2testCC
+            Ph2CC = Ph2.cc
         )
 
     })

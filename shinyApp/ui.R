@@ -36,7 +36,8 @@ shinyUI(fluidPage(
                     numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
                     numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
                     numericInput("Ph1testBatches", "Ph1 Test parameters batches", 10, min = 1),
-                    numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2)
+                    numericInput("Ph1testSampleSize", "Ph1 Test parameters sample size", 5, min = 2),
+                    numericInput("Ph1testCC", "Ph1 Test Charting constant", 3, min = 1e-6)
                 ),
               
                 #######################################################################################
@@ -51,14 +52,14 @@ shinyUI(fluidPage(
                 ####################################################################################### 
                 conditionalPanel(
                     condition = "input.Ph2cc == 'Basic Phase II X-bar Chart(UC)'",
-                    numericInput("ARL0", "Ph2 In-control Average Run Length", 370, min = 1)
+                    numericInput("ARL0", "Ph2 Nominal In-control Average Run Length", 370, min = 1)
                 ),                
                 
                 conditionalPanel(
                     condition = "input.Ph2cc == 'Basic Phase II X-bar Chart(EPC)'",
-                    numericInput("Alpha", "Alpha", 0.05, min = 1e-6, max = 1),
-                    numericInput("Eps", "Eps", 0.1, min = 0),
-                    numericInput("P", "P", 0.05, min = 1e-6, max = 1)
+                    numericInput("ARL0", "Ph2 Nominal In-control Average Run Length", 370, min = 1),
+                    numericInput("Eps", "Tolerance Factor", 0.1, min = 0, max = 1-1e-6),
+                    numericInput("P", "Significance Level", 0.05, min = 1e-6, max = 1)
                 ),  
                 
                 conditionalPanel(
