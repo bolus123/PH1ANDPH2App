@@ -18,7 +18,8 @@ shinyUI(fluidPage(
         sidebarPanel(
           
                 selectInput("Ph1cc", "Phase I Control Chart:", 
-                      choices = c("Basic Phase I X-bar Chart"， "Basic Ph I Testing")),
+                      #choices = c("Basic Phase I X-bar Chart"， "Basic Ph I Testing")),
+                      choices = c("Basic Phase I X-bar Chart")),
           
                 fileInput('Ph1Data', 'Choose Phase I Data',
                     accept = c(".xlsx")),
@@ -45,7 +46,8 @@ shinyUI(fluidPage(
                 #######################################################################################
           
                 selectInput("Ph2cc", "Phase II Control Chart:", 
-                      choices = c("Basic Phase II X-bar Chart", "Basic Ph II Testing")),
+                #      choices = c("Basic Phase II X-bar Chart", "Basic Ph II Testing")),
+                        choices = c("Basic Phase II X-bar Chart")),
           
                 fileInput('Ph2Data', 'Choose Phase II Data',
                     accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
