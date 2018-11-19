@@ -3,6 +3,8 @@ packages<-c("moments", "devtools")
 check.packages(packages)
 install_github('bolus123/PH1AND2XBAR')
 
+PH1.get.cc <- PH1AND2XBAR::PH1.get.cc
+
 #########################################################################
 
 Statistics <- function(Data){
