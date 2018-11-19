@@ -27,15 +27,15 @@ shinyUI(fluidPage(
                 #######################################################################################    
                 numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1),
                 #######################################################################################
-                conditionalPanel(
-                    condition = "input.plotType == 'hist'",
-                    selectInput(
-                       "breaks", "Breaks",
-                       c("Sturges",
-                         "Scott",
-                         "Freedman-Diaconis",
-                         "[Custom]" = "custom")
-                ),
+                #conditionalPanel(
+                #    condition = "input.plotType == 'hist'",
+                #    selectInput(
+                #       "breaks", "Breaks",
+                #       c("Sturges",
+                #         "Scott",
+                #         "Freedman-Diaconis",
+                #         "[Custom]" = "custom")
+                #),
                 
                 #numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
                 #numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
