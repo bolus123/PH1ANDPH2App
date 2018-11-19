@@ -31,7 +31,7 @@ shinyServer(function(input, output) {
     })
     
     Ph2Data <- reactive({
-        if (input$Ph2cc == 'Basic Ph I Testing') {
+        if (input$Ph2cc == 'Basic Ph II Testing') {
             Ph2Data <- rnorm(input$Ph2testBatches * input$Ph2testSampleSize, input$Ph2testNormMu, sqrt(input$Ph2testNormSigma2))
             Ph2Data <- matrix(Ph2Data, ncol = input$Ph2testSampleSize, nrow = input$Ph2testBatches)
         } else {
