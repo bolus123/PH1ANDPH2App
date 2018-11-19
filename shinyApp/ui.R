@@ -11,32 +11,25 @@ shinyUI(fluidPage(
   # Application title
   
     titlePanel("Phase I and Phase II Control Charts"),
-  
-  
-  
+
     sidebarLayout(
         sidebarPanel(
           
                 selectInput("Ph1cc", "Phase I Control Chart:", 
-                      #choices = c("Basic Phase I X-bar Chart"， "Basic Ph I Testing")),
-                      choices = c("Basic Phase I X-bar Chart")),
+                      choices = c("Basic Phase I X-bar Chart", "Basic Ph I Testing")),
+                      #choices = c("Basic Phase I X-bar Chart")),
           
                 fileInput('Ph1Data', 'Choose Phase I Data',
                     accept = c(".xlsx")),
                     
                     
                 #######################################################################################    
-                numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1),
+                #numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1),
                 #######################################################################################
-                #conditionalPanel(
-                #    condition = "input.plotType == 'hist'",
-                #    selectInput(
-                #       "breaks", "Breaks",
-                #       c("Sturges",
-                #         "Scott",
-                #         "Freedman-Diaconis",
-                #         "[Custom]" = "custom")
-                #),
+                conditionalPanel(
+                    condition = "input.Ph1cc == 'Basic Phase I X-bar Chart'",
+                    numericInput("FAP", "Ph1 False Alarm Probability", 0.05, min = 0, max = 1)
+                ),
                 
                 #numericInput("Ph1testNormMu", "Ph1 Test parameters mu", 0),
                 #numericInput("Ph1testNormSigma2", "Ph1 Test parameters sigma2", 1, min = 1e-6),
@@ -46,8 +39,8 @@ shinyUI(fluidPage(
                 #######################################################################################
           
                 selectInput("Ph2cc", "Phase II Control Chart:", 
-                #      choices = c("Basic Phase II X-bar Chart", "Basic Ph II Testing")),
-                        choices = c("Basic Phase II X-bar Chart")),
+                      choices = c("Basic Phase II X-bar Chart(UC)", "Basic Phase II X-bar Chart(EPC)", "Basic Ph II Testing")),
+                #        choices = c("Basic Phase II X-bar Chart")),
           
                 fileInput('Ph2Data', 'Choose Phase II Data',
                     accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')), 
