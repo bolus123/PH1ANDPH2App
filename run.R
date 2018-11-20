@@ -13,4 +13,8 @@ check.packages(packages)
 
 ###########################################################################################
 
-runGitHub('bolus123/PH1ANDPH2App', subdir = 'shinyApp')
+options(shiny.port = 38383)
+
+options(shiny.host = "127.0.0.1")
+
+runGitHub('bolus123/PH1ANDPH2App', subdir = 'shinyApp', host = getOption("shiny.host", "127.0.0.1"))
