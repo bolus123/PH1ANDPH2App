@@ -1,7 +1,7 @@
 shinyServer(function(input, output) {
 
   
-    source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/functions.R', local = TRUE)
+    source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/head.server.R', local = TRUE)
 
     
 ################################################################################################################ 
