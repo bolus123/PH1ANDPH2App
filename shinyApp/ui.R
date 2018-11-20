@@ -1,4 +1,4 @@
-source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/head.ui.R')
+source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/head.ui.R', local = TRUE)
 
 # Define UI for Statistical Performance Analysis (spa)
 
