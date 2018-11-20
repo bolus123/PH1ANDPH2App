@@ -117,8 +117,8 @@ ControlChartPlot <- function(Ph1ChartStat, Ph2ChartStat, Ph1Mu, Ph1Sigma2, Ph1CC
     
     }
     
-    plot.max <- max(c(Ph1ChartStat, Ph1LowerLimit.vec, Ph1UpperLimit.vec, Ph2LowerLimit.vec, Ph2UpperLimit.vec))
-    plot.min <- min(c(Ph1ChartStat, Ph1LowerLimit.vec, Ph1UpperLimit.vec, Ph2LowerLimit.vec, Ph2UpperLimit.vec))
+    plot.max <- max(c(Ph1ChartStat, Ph1LowerLimit.vec, Ph1UpperLimit.vec, Ph2LowerLimit.vec, Ph2UpperLimit.vec, Ph1ChartStat, Ph2ChartStat))
+    plot.min <- min(c(Ph1ChartStat, Ph1LowerLimit.vec, Ph1UpperLimit.vec, Ph2LowerLimit.vec, Ph2UpperLimit.vec, Ph1ChartStat, Ph2ChartStat))
     
     ####This part will be replaced by ggplot2
     
