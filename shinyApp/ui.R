@@ -1,10 +1,9 @@
+source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/head.ui.R')
+
 # Define UI for Statistical Performance Analysis (spa)
 
 shinyUI(fluidPage(
 
-    source('https://raw.githubusercontent.com/bolus123/PH1ANDPH2App/master/shinyApp/head.ui.R', local = TRUE)
-  
-  
   # Application theme
   
     theme = shinytheme("flatly"),
